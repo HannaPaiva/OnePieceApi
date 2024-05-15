@@ -1,5 +1,11 @@
 const express = require('express');
 const app = express();
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); // Permite o acesso de qualquer origem
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); // Métodos permitidos
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Cabeçalhos permitidos
+    next();
+  });
 const onePieceCharacters = require('./onePieceCharacters');
 
 // Rota para retornar informações de um personagem aleatório
